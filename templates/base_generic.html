@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>{% block title %} {% endblock title %} - Youtube Clone Web </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+</head>
+
+
+
+
+
+<body>
+    <center>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link 
+                {% if request.path == '/' %}
+                    active
+                {% endif %}
+                    " aria-current="page" href="{% url 'content:home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.path == '/new_video/' %}
+                active
+            {% endif %}" href="{% url 'content:newVid' %}">Add Video</a>
+            </li>
+            <li class="nav-item">
+                {% if tabName == "login" %}
+                <a class="nav-link {% if request.path == '/login/' %}
+                active
+            {% endif %}" href="{% url 'content:login' %}">SignIn</a>
+                <li class="nav-item">
+                    <a class="nav-link 
+                {% if request.path == '/register/' %}
+                active
+                {% endif %}" href="{% url 'content:register' %}">SignUp</a>
+                </li>
+                {% elif tabName == "logout" %}
+                <a class="nav-link 
+                {% if request.path == '/logout' %}
+                active
+                {% endif %}" href="{% url 'content:logout' %}">SignOut</a> {% endif %}
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link {% if request.path == '/support/' %}
+                active
+            {% endif %}" href="#" tabindex="-1" aria-disabled="true">Support</a><br>
+            </li>
+        </ul>
+        {% block body %} {% endblock body%}
+
+    </center>
+</body>
+
+
+
+
+
+
+</html>

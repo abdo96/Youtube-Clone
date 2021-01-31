@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %} {% block title %} {{title}} {% endblock title %} {% block body %}
+<form method='POST' enctype='multipart/form-data'>
+    {% csrf_token %}
+    <table>
+        {{form}}
+        <br> {% for text_1 in body_text %} {{text_1}}
+        <br> {% endfor %}
+        <tr>
+            <td>{{hint_text}}</td>
+
+        </tr>
+
+        <tr>
+
+
+            <td> <button type="submit" class="btn btn-primary">{{btnName}}</button></td>
+        </tr>
+
+    </table>
+</form>
+{% endblock body %}

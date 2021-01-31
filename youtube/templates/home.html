@@ -1,0 +1,11 @@
+{% extends 'base_generic.html' %} {% block title %} Home {% endblock title %} {% block body %}
+<h1>Welcome to Youtube Django Clone</h1> <br>
+<h2>Most recent Video:</h2><br> {% for video in most_recent_videos %}
+<div style="align-content:left; width:50%; border-width:2px; border-color:aquamarine; border-style:solid;">
+    <h6>{{video.title}}</h6>
+    <p style="font-size: 10px; color:gray">Uploaded by {{video.user}} on {{video.datetime}} </p>
+    <p>{{video.description}}</p>
+    <p style="text-align: right"><a href="/video/{{video.id}}">Watch Video</a></p>
+
+</div>
+{% endfor %} {% endblock body %}

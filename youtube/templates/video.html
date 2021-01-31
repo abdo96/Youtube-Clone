@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %} {% block title %} Video {% endblock title %} {% block body %}
+<h2>{{video.title}}</h2><br>
+<video width="320" height="240" autoplay>
+    <source src="{{video.path}}" type="video/mp4">
+  
+  Your browser does not support the video tag.
+  </video>
+<p>{{video.description}}</p>
+<br><br>
+<h3>Comments</h3>
+<form method='POST' action="{% url 'content:comment' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {{form}}
+        <input type='hidden' name='video' value={{video.id}}>
+        <td> <button type="submit" class="btn btn-primary">Post Comment</button></td>
+
+    </table>
+</form>
+{% for comment in comments %}
+<p>
+    {{comment.user}} posted on {{comment.datetime}}<br> {{comment.text}}
+</p>
+{% endfor %}
+<br><br> {% endblock body %}
